@@ -10,14 +10,17 @@ class Locations
     /**
      * @param array|string $cities
      */
-    public function setCities($cities): void
+    public function setCities(array|string $cities): void
     {
         if (!is_array($cities)) {
             $cities = array($cities);
         }
 
         foreach ($cities as $city) {
-            $this->cities[] = $cities;
+            if (!in_array($city, $this->cities)) {
+                $this->cities[] = $city;
+            }
+
         }
     }
 

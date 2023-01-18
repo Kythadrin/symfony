@@ -1,0 +1,281 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="forecast" class="container">
+{#            {% for locationName, city in weatherResult %}#}
+{#                <h1>{{ locationName }}</h1>#}
+{#                {% for weather in city %}#}
+{#                    {% if loop.index == 1 %}#}
+{#                        <h2>Current weather</h2>#}
+{#                        <div>#}
+{#                            <table class="table table-bordered text-center">#}
+{#                                <thead>#}
+{#                                <tr>#}
+{#                                    <th rowspan="2" id="location">Location</th>#}
+{#                                    <th rowspan="2" id="country">Country</th>#}
+{#                                    <th colspan="2" id="coordinate"> Coordinates</th>#}
+{#                                </tr>#}
+{#                                <tr>#}
+{#                                    <th id="longitude">Longitude</th>#}
+{#                                    <th id="latitude">Latitude</th>#}
+{#                                </tr>#}
+{#                                </thead>#}
+{#                                <tr>#}
+{#                                    <td>{{ weather.name }}</td>#}
+{#                                    <td>{{ weather.sys.country }}</td>#}
+{#                                    <td>{{ weather.coord.lon }}</td>#}
+{#                                    <td>{{ weather.coord.lat }}</td>#}
+{#                                </tr>#}
+{#                            </table>#}
+{#                        </div>#}
+{#                        <div>#}
+{#                            <table class="table table-bordered text-center">#}
+{#                                <thead>#}
+{#                                    <tr>#}
+{#                                        <th id="weather" rowspan="2">Weather</th>#}
+{#                                        <th id="wind" colspan="2">Winds</th>#}
+{#                                        <th id="temp" colspan="4">Temperature  °C</th>#}
+{#                                        <th id="pressure" rowspan="2">Pressure</th>#}
+{#                                        <th id="humidity" rowspan="2">Humidity</th>#}
+{#                                    </tr>#}
+{#                                    <tr>#}
+{#                                        <th id="speed">Speed</th>#}
+{#                                        <th id="deg">Deg</th>#}
+{#                                        <th id="real">Real</th>#}
+{#                                        <th id="feels_like">Feels like</th>#}
+{#                                        <th id="min">Min</th>#}
+{#                                        <th id="max">Max</th>#}
+{#                                    </tr>#}
+{#                                </thead>#}
+{#                                <tr>#}
+{#                                    <td>{{ weather.weather[0].description }}</td>#}
+{#                                    <td>{{ weather.wind.speed }} km/h</td>#}
+{#                                    <td><i id="deg_value" class="wi wi-wind towards-{{ weather.wind.deg }}-deg"></i></td>#}
+{#                                    <td>{{ weather.main.temp|round }} <i class="wi wi-celsius"></i></td>#}
+{#                                    <td>{{ weather.main.feels_like }} <i class="wi wi-celsius"></i></td>#}
+{#                                    <td>{{ weather.main.temp_min }} <i class="wi wi-celsius"></i></td>#}
+{#                                    <td>{{ weather.main.temp_max }} <i class="wi wi-celsius"></i></td>#}
+{#                                    <td>{{ weather.main.pressure }}  <i class="wi wi-barometer"></i></td>#}
+{#                                    <td>{{ weather.main.humidity }}  <i class="wi wi-humidity"></i></td>#}
+{#                                </tr>#}
+{#                            </table>#}
+{#                            <br>#}
+{#                            <h4>Daytime {{ weather.sys.sunrise|date('d/m/Y') }}</h4>#}
+{#                            <p class="sun_infos">Sunrise: <span class="sun_infos_value">{{ weather.sys.sunrise|date('H:i:s') }}</span></p>#}
+{#                            <p class="sun_infos">Sunset: <span class="sun_infos_value">{{ weather.sys.sunset|date('H:i:s') }}</span></p>#}
+{#                        </div>#}
+{#                    {% endif %}#}
+{#                    {% if loop.index == 2 %}#}
+{#                        <h2>Weather for the week </h2>#}
+{#                        {% set previousDate = 0 %}#}
+{#                        {% for weatherDay in weather.list %}#}
+{#                            {% if weatherDay.dt_txt | date('d/m/Y') != previousDate and not loop.first %}#}
+{#                                <h3>{{ weatherDay.dt_txt | date('M d, Y') }}</h3>#}
+{#                                <div>#}
+{#                                    <table class="table table-bordered text-center">#}
+{#                                        <thead>#}
+{#                                            <tr>#}
+{#                                                <th id="weather" rowspan="2">Weather</th>#}
+{#                                                <th id="wind" colspan="2">Winds</th>#}
+{#                                                <th id="temp" colspan="4">Temperature  °C</th>#}
+{#                                                <th id="pressure" rowspan="2">Pressure</th>#}
+{#                                                <th id="humidity" rowspan="2">Humidity</th>#}
+{#                                            </tr>#}
+{#                                            <tr>#}
+{#                                                <th id="speed">Speed</th>#}
+{#                                                <th id="deg">Deg</th>#}
+{#                                                <th id="real">Real</th>#}
+{#                                                <th id="feels_like">Feels like</th>#}
+{#                                                <th id="min">Min</th>#}
+{#                                                <th id="max">Max</th>#}
+{#                                            </tr>#}
+{#                                        </thead>#}
+{#                                        <tr>#}
+{#                                            <td>{{ weatherDay.weather[0].description }}</td>#}
+{#                                            <td>{{ weatherDay.wind.speed }} km/h</td>#}
+{#                                            <td><i id="deg_value" class="wi wi-wind towards-{{ weatherDay.wind.deg }}-deg"></i></td>#}
+{#                                            <td>{{ weatherDay.main.temp|round }} <i class="wi wi-celsius"></i></td>#}
+{#                                            <td>{{ weatherDay.main.feels_like }} <i class="wi wi-celsius"></i></td>#}
+{#                                            <td>{{ weatherDay.main.temp_min }} <i class="wi wi-celsius"></i></td>#}
+{#                                            <td>{{ weatherDay.main.temp_max }} <i class="wi wi-celsius"></i></td>#}
+{#                                            <td>{{ weatherDay.main.pressure }}  <i class="wi wi-barometer"></i></td>#}
+{#                                            <td>{{ weatherDay.main.humidity }}  <i class="wi wi-humidity"></i></td>#}
+{#                                        </tr>#}
+{#                                    </table>#}
+{#                                </div>#}
+{#                            {% endif %}#}
+{#                            {% set previousDate = weatherDay.dt_txt | date('d/m/Y') %}#}
+{#                        {% endfor %}#}
+{#                    {% endif %}#}
+{#                {% endfor %}#}
+{#            {% endfor %}#}
+    </div>
+    <script type="text/javascript">
+        let data;
+
+        fetch('/api/weather', {
+            method: 'GET',
+            headers: {
+                "Authorization": localStorage.getItem('jwt'),
+            },
+        })
+            .then(response => response.json())
+            .then(data => {
+                for (const [locationName, city] of Object.entries(data)) {
+                    document.getElementById('forecast').innerHTML += '<h1>' + locationName + '</h1>';
+
+                    let first = true;
+                    for (const type of Object.entries(city)) {
+                        let weather = type[1];
+                        if (first) {
+                            document.getElementById('forecast').innerHTML +=
+                                '<h2>Current weather</h2>' +
+                                '<div> ' +
+                                '<table class="table table-bordered text-center"> ' +
+                                '<thead> ' +
+                                '<tr> ' +
+                                '<th rowspan="2" id="location">Location</th> ' +
+                                '<th rowspan="2" id="country">Country</th> ' +
+                                '<th colspan="2" id="coordinate"> Coordinates</th> ' +
+                                '</tr> ' +
+                                '<tr> ' +
+                                '<th id="longitude">Longitude</th> ' +
+                                '<th id="latitude">Latitude</th> ' +
+                                '</tr> ' +
+                                '</thead> ' +
+                                '<tr> ' +
+                                '<td>' + weather.name + '</td> ' +
+                                '<td>' + weather.sys.country + '</td> ' +
+                                '<td>' + weather.coord.lon + '</td>' +
+                                '<td>' + weather.coord.lat + '</td> ' +
+                                '</tr> ' +
+                                '</table> ' +
+                                '</div>' +
+                                '<div>' +
+                                '<table class="table table-bordered text-center">' +
+                                '<thead>' +
+                                '<tr>' +
+                                '<th id="weather" rowspan="2">Weather</th>' +
+                                '<th id="wind" colspan="2">Winds</th>' +
+                                '<th id="temp" colspan="4">Temperature  °C</th>' +
+                                '<th id="pressure" rowspan="2">Pressure</th>' +
+                                '<th id="humidity" rowspan="2">Humidity</th>' +
+                                '</tr>' +
+                                '<tr>' +
+                                '<th id="speed">Speed</th>' +
+                                '<th id="deg">Deg</th>' +
+                                '<th id="real">Real</th>' +
+                                '<th id="feels_like">Feels like</th>' +
+                                '<th id="min">Min</th>' +
+                                '<th id="max">Max</th>' +
+                                '</tr>' +
+                                '</thead>' +
+                                '<tr>' +
+                                '<td>' + weather.weather[0].description + '</td>' +
+                                '<td>' + weather.wind.speed + 'km/h</td>' +
+                                '<td><i id="deg_value" class="wi wi-wind towards-' + weather.wind.deg + '-deg"></i></td>' +
+                                '<td>' + Math.round(weather.main.temp) + '<i class="wi wi-celsius"></i></td>' +
+                                '<td>' + weather.main.feels_like + '<i class="wi wi-celsius"></i></td>' +
+                                '<td>' + weather.main.temp_min + '<i class="wi wi-celsius"></i></td>' +
+                                '<td>' + weather.main.temp_max + '<i class="wi wi-celsius"></i></td>' +
+                                '<td>' + weather.main.pressure + '<i class="wi wi-barometer"></i></td>' +
+                                '<td>' + weather.main.humidity + '<i class="wi wi-humidity"></i></td>' +
+                                '</tr>' +
+                                '</table>' +
+                                '<br>' +
+                                '<h4>Daytime ' + convertDate(weather.sys.sunrise) + '</h4>' +
+                                '<p class="sun_infos">Sunrise: <span class="sun_infos_value">' + formatTime(weather.sys.sunrise) + '</span></p>' +
+                                '<p class="sun_infos">Sunset: <span class="sun_infos_value">' + formatTime(weather.sys.sunset) + '</span></p>' +
+                                '</div>';
+                            first = false;
+                        } else {
+                            document.getElementById('forecast').innerHTML += '<h2>Weather for the week </h2>';
+
+                            let previousDate,
+                                first = true;
+
+                            for (const day of Object.entries(type[1]['list'])) {
+                                let weatherDay = day[1],
+                                    date = formatDate(weatherDay.dt_txt);
+                                if (date !== previousDate && !first) {
+                                    document.getElementById('forecast').innerHTML +=
+                                        '<h3>' + formatDate(weatherDay.dt_txt) + '</h3>' +
+                                        '<div>' +
+                                        '<table class="table table-bordered text-center">' +
+                                        '<thead>' +
+                                        '<tr>' +
+                                        '<th id="weather" rowspan="2">Weather</th>' +
+                                        '<th id="wind" colspan="2">Winds</th>' +
+                                        '<th id="temp" colspan="4">Temperature  °C</th>' +
+                                        '<th id="pressure" rowspan="2">Pressure</th>' +
+                                        '<th id="humidity" rowspan="2">Humidity</th>' +
+                                        '</tr>' +
+                                        '<tr>' +
+                                        '<th id="speed">Speed</th>' +
+                                        '<th id="deg">Deg</th>' +
+                                        '<th id="real">Real</th>' +
+                                        '<th id="feels_like">Feels like</th>' +
+                                        '<th id="min">Min</th>' +
+                                        '<th id="max">Max</th>' +
+                                        '</tr>' +
+                                        '</thead>' +
+                                        '<tr>' +
+                                        '<td>' + weatherDay.weather[0].description + '</td>' +
+                                        '<td>' + weatherDay.wind.speed + 'km/h</td>' +
+                                        '<td><i id="deg_value" class="wi wi-wind towards-' + weatherDay.wind.deg + '-deg"></i></td>' +
+                                        '<td>' + Math.round(weatherDay.main.temp) + '<i class="wi wi-celsius"></i></td>' +
+                                        '<td>' + weatherDay.main.feels_like + '<i class="wi wi-celsius"></i></td>' +
+                                        '<td>' + weatherDay.main.temp_min + '<i class="wi wi-celsius"></i></td>' +
+                                        '<td>' + weatherDay.main.temp_max + '<i class="wi wi-celsius"></i></td>' +
+                                        '<td>' + weatherDay.main.pressure + '<i class="wi wi-barometer"></i></td>' +
+                                        '<td>' + weatherDay.main.humidity + '<i class="wi wi-humidity"></i></td>' +
+                                        '</tr>' +
+                                        '</table>' +
+                                        '</div>';
+                                }
+
+                                first = false;
+                                previousDate = formatDate(weatherDay.dt_txt);
+                            }
+                        }
+                    }
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+
+        function convertDate(date) {
+            let d = new Date(+((date * 1000))),
+                month = '' + (d.getMonth() + 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear();
+
+            if (month.length < 2) month = '0' + month;
+            if (day.length < 2) day = '0' + day;
+
+            return [day, month, year].join('/');
+        }
+
+        function formatDate(date) {
+            let d = new Date(date),
+                month = '' + (d.getMonth() + 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear();
+
+            if (month.length < 2) month = '0' + month;
+            if (day.length < 2) day = '0' + day;
+
+            return [day, month, year].join('/');
+        }
+
+        function formatTime(time) {
+            let d = new Date(+((time * 1000))),
+                hours = d.getHours(),
+                minutes = d.getMinutes();
+
+            return [hours, minutes].join(':');
+        }
+    </script>
+{% endblock %}
+
